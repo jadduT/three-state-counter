@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+import React,{useState} from 'react'
 import './App.css';
 
-function App() {
+function App(){
+  const [count,setCount] = useState(0);
+
+
+  const incrementCount =() =>{
+    if (count >10){
+      alert("cannot Increment counter greater than 11")
+      return ""
+    }else{
+      setCount(count+1) 
+    }
+    
+  }
+
+  const decrementCount =() =>{
+    if(count <1){
+      window.alert("cannot decrement counter in negative.")
+    }else{
+      setCount(count -1);
+    }
+  }
+
+  function resetCount(){
+    return(setCount(0))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h1>Counter := {count}</h1>
+      <button onClick={incrementCount}> + </button>
+      <button onClick={decrementCount}> - </button>
+      <button onClick={resetCount}> reset </button>
     </div>
   );
 }
